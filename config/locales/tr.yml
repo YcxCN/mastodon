@@ -903,6 +903,8 @@ tr:
     system_checks:
       database_schema_check:
         message_html: Beklemede olan veritabanı güncellemeleri mevcut. Uygulamanın beklenildiği gibi çalışması için lütfen onları çalıştırın
+      elasticsearch_analysis_index_mismatch:
+        message_html: Elasticsearch indeks çözümleyici ayarları artık güncel değil. Lütfen <code>tootctl search deploy --only-mapping --only=%{value}</code> komutunu çalıştırın
       elasticsearch_health_red:
         message_html: Elasticsearch kümesi sağlıksız (kırmızı durum), arama özellikleri mevcut değil
       elasticsearch_health_yellow:
@@ -1856,6 +1858,10 @@ tr:
       limit: Halihazırda maksimum sayıda gönderi sabitlediniz
       ownership: Başkasının gönderisi sabitlenemez
       reblog: Bir gönderi sabitlenemez
+    quote_policies:
+      followers: Takipçiler ve bahsedilen kullanıcılar
+      nobody: Sadece bahsedilen kullanıcılar
+      public: Herkes
     title: '%{name}: "%{quote}"'
     visibilities:
       direct: Doğrudan
