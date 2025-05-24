@@ -59,6 +59,7 @@ import {
 import { getAccountHidden } from 'mastodon/selectors/accounts';
 import { useAppSelector, useAppDispatch } from 'mastodon/store';
 
+import { FamiliarFollowers } from './familiar_followers';
 import { MemorialNote } from './memorial_note';
 import { MovedNote } from './moved_note';
 
@@ -107,7 +108,6 @@ const messages = defineMessages({
     id: 'account.disable_notifications',
     defaultMessage: 'Stop notifying me when @{name} posts',
   },
-  pins: { id: 'navigation_bar.pins', defaultMessage: 'Pinned posts' },
   preferences: {
     id: 'navigation_bar.preferences',
     defaultMessage: 'Preferences',
@@ -451,7 +451,6 @@ export const AccountHeader: React.FC<{
         text: intl.formatMessage(messages.preferences),
         href: '/settings/preferences',
       });
-      arr.push({ text: intl.formatMessage(messages.pins), to: '/pinned' });
       arr.push(null);
       arr.push({
         text: intl.formatMessage(messages.follow_requests),
@@ -911,6 +910,10 @@ export const AccountHeader: React.FC<{
 
           {badges.length > 0 && (
             <div className='account__header__badges'>{badges}</div>
+          )}
+
+          {account.id !== me && signedIn && (
+            <FamiliarFollowers accountId={accountId} />
           )}
 
           {!(suspended || hidden) && (
